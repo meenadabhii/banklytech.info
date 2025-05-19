@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Valuation | ValorEdge</title>
+    <link href="/game3289/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        .cyber-gradient {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .cyber-bg {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        }
+        .cyber-card {
+            background: rgba(15, 32, 39, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+        .cyber-button {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            transition: all 0.3s ease;
+        }
+        .cyber-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        }
+        .scanlines {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanlines::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(79, 172, 254, 0.05) 50%,
+                transparent 100%
+            );
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+        }
+        .glow {
+            text-shadow: 0 0 8px rgba(79, 172, 254, 0.6);
+        }
+        .holographic {
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3),
+                        0 0 30px rgba(79, 172, 254, 0.2);
+        }
+    </style>
+</head>
+<body class="cyber-bg text-gray-100 font-sans min-h-screen flex flex-col items-center justify-start p-4 pt-8">
+    <!-- Floating particles -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-teal-400 opacity-20 floating" style="animation-delay: 0s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-4 h-4 rounded-full bg-cyan-400 opacity-20 floating" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-2 h-2 rounded-full bg-teal-500 opacity-20 floating" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navigation -->
+<div class="flex justify-between cyber-card rounded-full p-1">
+    <button id="prev-btn" class="p-2 text-cyan-300 rounded-full hover:bg-cyan-900/30">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+</div>
+
+
+    <main class="w-full max-w-md mx-auto">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-2xl font-bold cyber-gradient glow">Quantum Valuation</h1>
+                <p class="text-xs text-cyan-300">Neural Analysis Engine v3.2</p>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <div class="cyber-card rounded-xl p-6 mb-6 scanlines">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-atom mr-2 text-teal-400"></i>
+                Next-Gen DCF Modeling
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Our quantum-enhanced discounted cash flow algorithms process 27x more variables than traditional models, accounting for market volatility clusters and non-linear growth patterns.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Neural Forecasting</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Self-learning revenue prediction models</p>
+                </div>
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Scenario Waves</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Multi-dimensional probability modeling</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Content Card -->
+        <div class="cyber-card rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-network-wired mr-2 text-teal-400"></i>
+                Holographic Comps
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Three-dimensional comparable company analysis that maps 127 financial metrics across temporal, sectoral, and growth vector axes.
+            </p>
+            <div class="relative h-40 bg-cyan-900/20 rounded-lg mt-4 flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="h-24 w-24 rounded-full border-2 border-teal-400/30 absolute"></div>
+                    <div class="h-32 w-32 rounded-full border-2 border-teal-400/20 absolute"></div>
+                    <div class="h-40 w-40 rounded-full border-2 border-teal-400/10 absolute"></div>
+                    <div class="holographic bg-cyan-900/30 rounded-lg p-3 text-center z-10">
+                        <i class="fas fa-project-diagram text-teal-400 text-2xl"></i>
+                        <p class="text-xs text-cyan-300 mt-1">Comparative Matrix</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Content Section 1: LBO Valuation -->
+        <div class="cyber-card rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-chess-queen mr-2 text-teal-400"></i>
+                Leveraged Buyout Analysis
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Our LBO models incorporate 53 debt structure scenarios with dynamic covenant testing. The algorithm calculates optimal capital structures by simulating 1,200+ financing combinations, accounting for:
+            </p>
+            <ul class="text-xs text-cyan-300 space-y-2 mb-4">
+                <li class="flex items-start"><i class="fas fa-circle-notch text-teal-400 mr-2 mt-1 text-xs"></i> Mezzanine debt tranche waterfall analysis</li>
+                <li class="flex items-start"><i class="fas fa-circle-notch text-teal-400 mr-2 mt-1 text-xs"></i> Sponsor equity IRR sensitivity to exit multiples</li>
+                <li class="flex items-start"><i class="fas fa-circle-notch text-teal-400 mr-2 mt-1 text-xs"></i> Debt capacity modeling under stress scenarios</li>
+                <li class="flex items-start"><i class="fas fa-circle-notch text-teal-400 mr-2 mt-1 text-xs"></i> Tax shield optimization across jurisdictions</li>
+            </ul>
+            <div class="bg-cyan-900/20 border border-cyan-800 rounded-lg p-3 mt-4">
+                <p class="text-xs text-teal-400 font-semibold">LBO Output Metrics:</p>
+                <div class="grid grid-cols-3 gap-2 mt-2 text-center">
+                    <div class="p-2 bg-cyan-900/30 rounded">
+                        <p class="text-xxs text-cyan-400">MOIC Range</p>
+                        <p class="text-xs font-bold text-teal-300">2.4x-3.8x</p>
+                    </div>
+                    <div class="p-2 bg-cyan-900/30 rounded">
+                        <p class="text-xxs text-cyan-400">IRR Band</p>
+                        <p class="text-xs font-bold text-teal-300">18%-32%</p>
+                    </div>
+                    <div class="p-2 bg-cyan-900/30 rounded">
+                        <p class="text-xxs text-cyan-400">Debt/EBITDA</p>
+                        <p class="text-xs font-bold text-teal-300">4.2x-5.7x</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Content Section 2: Precedent Transactions -->
+        <div class="cyber-card rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-exchange-alt mr-2 text-teal-400"></i>
+                Transaction Multiples Engine
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Our database tracks 28,000+ M&A transactions across 142 industries, applying machine learning to normalize deal multiples for:
+            </p>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Control Premiums</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Dynamic premium modeling based on strategic fit</p>
+                </div>
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Synergy Adjustments</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Cost & revenue synergy probability weighting</p>
+                </div>
+            </div>
+            <div class="bg-cyan-900/20 border border-cyan-800 rounded-lg p-3">
+                <p class="text-xs text-teal-400 font-semibold mb-2">Recent Comparable Transactions:</p>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-cyan-800/50 pb-2">
+                        <p class="text-xs text-cyan-300">Tech Sector</p>
+                        <p class="text-xs font-bold text-teal-300">8.2x EV/EBITDA</p>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-cyan-800/50 pb-2">
+                        <p class="text-xs text-cyan-300">Healthcare</p>
+                        <p class="text-xs font-bold text-teal-300">12.4x Revenue</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xs text-cyan-300">Industrial</p>
+                        <p class="text-xs font-bold text-teal-300">6.7x EV/EBITDA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Content Section 3: Sum-of-Parts -->
+        <div class="cyber-card rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-puzzle-piece mr-2 text-teal-400"></i>
+                Conglomerate Deconstruction
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Break-up analysis algorithms evaluate 19 value drivers across business units, incorporating:
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-cyan-900/40 text-cyan-300 px-2 py-1 rounded-full">Standalone cost structures</span>
+                <span class="text-xs bg-cyan-900/40 text-cyan-300 px-2 py-1 rounded-full">Corporate cost allocation</span>
+                <span class="text-xs bg-cyan-900/40 text-cyan-300 px-2 py-1 rounded-full">Segment WACC calculations</span>
+                <span class="text-xs bg-cyan-900/40 text-cyan-300 px-2 py-1 rounded-full">Cross-holding adjustments</span>
+            </div>
+            <div class="relative h-32 bg-cyan-900/20 rounded-lg mt-2 flex items-center justify-center">
+                <div class="absolute inset-0 flex items-center justify-center space-x-4">
+                    <div class="holographic bg-cyan-900/30 rounded-lg p-2 text-center w-16">
+                        <p class="text-xxs text-teal-400">Unit A</p>
+                        <p class="text-xs font-bold">$1.2B</p>
+                    </div>
+                    <div class="holographic bg-cyan-900/30 rounded-lg p-2 text-center w-16">
+                        <p class="text-xxs text-teal-400">Unit B</p>
+                        <p class="text-xs font-bold">$0.8B</p>
+                    </div>
+                    <div class="holographic bg-cyan-900/30 rounded-lg p-2 text-center w-16">
+                        <p class="text-xxs text-teal-400">Unit C</p>
+                        <p class="text-xs font-bold">$1.5B</p>
+                    </div>
+                    <div class="holographic bg-cyan-900/30 rounded-lg p-2 text-center w-16">
+                        <p class="text-xxs text-teal-400">Corporate</p>
+                        <p class="text-xs font-bold">($0.3B)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="text-xs text-cyan-400">Implied Conglomerate Value:</p>
+                <p class="text-xl font-bold text-teal-300 glow">$3.2 Billion</p>
+            </div>
+        </div>
+
+        <!-- New Content Section 4: Real Options -->
+        <div class="cyber-card rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-cyan-100 flex items-center">
+                <i class="fas fa-chess-knight mr-2 text-teal-400"></i>
+                Strategic Option Valuation
+            </h2>
+            <p class="text-sm text-cyan-200 mb-4">
+                Quantifying flexibility value using modified Black-Scholes and binomial lattice models for:
+            </p>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Expansion Options</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Growth option volatility surfaces</p>
+                </div>
+                <div class="cyber-card rounded-lg p-3 border border-cyan-800/50">
+                    <div class="text-teal-400 mb-1">
+                        <i class="fas fa-compress"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-cyan-100">Abandonment</h3>
+                    <p class="text-xs text-cyan-300 mt-1">Shutdown option payoff modeling</p>
+                </div>
+            </div>
+            <div class="bg-cyan-900/20 border border-cyan-800 rounded-lg p-3">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="text-xs text-cyan-300">Project NPV (Static):</p>
+                    <p class="text-xs font-bold text-cyan-200">$120M</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-xs text-cyan-300">+ Strategic Option Value:</p>
+                    <p class="text-xs font-bold text-teal-300">$45M</p>
+                </div>
+                <div class="border-t border-cyan-800 mt-2 pt-2 flex justify-between items-center">
+                    <p class="text-xs text-cyan-100 font-semibold">Expanded NPV:</p>
+                    <p class="text-sm font-bold text-teal-400">$165M</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advertisement Space -->
+        <div class="cyber-card rounded-xl p-4 mb-6 text-center">
+            <p class="text-xs text-cyan-500 mb-2">Advertisement</p>
+            <div class="bg-cyan-900/20 border border-cyan-800 rounded-lg p-4 flex items-center justify-center h-24">
+                <p class="text-xs text-cyan-400">Advertisement Space</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-cyan-500 mt-8 pb-4">
+        <p>© 2023 ValorEdge Quantum Finance | v3.2.45</p>
+    </footer>
+    <script>
+    document.getElementById('prev-btn').addEventListener('click', function() {
+        window.history.back(); // Goes to previous page
+    });
+</script>
+
+</body>
+</html>

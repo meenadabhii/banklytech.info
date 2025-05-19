@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banklytech | Corporate Valuation Experts</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #f59e0b, #ef4444);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+    </style>
+
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        (function () {
+            window.googletag = window.googletag || { cmd: [] };
+
+            let adSlot1, adSlot2, anchorSlot;
+            const refreshInterval = 30000;
+            let refreshTimer;
+
+            function setupAds() {
+                googletag.cmd.push(function () {
+                    const pubads = googletag.pubads();
+                    pubads.enableSingleRequest();
+                    pubads.setCentering(true);
+
+                    if (window.geoTarget) {
+                        pubads.setLocation(window.geoTarget);
+                    }
+
+                    adSlot1 = googletag
+                        .defineSlot(
+                            "/6355419/Travel/Europe/France/Paris",
+                            [
+                                [728, 90],
+                                [300, 250],
+                            ],
+                            "ad-slot-1"
+                        )
+                        .addService(pubads);
+
+                    adSlot2 = googletag
+                        .defineSlot(
+                            "/6355419/Travel/Europe/France/Paris",
+                            [
+                                [300, 250],
+                                [336, 280],
+                            ],
+                            "ad-slot-2"
+                        )
+                        .addService(pubads);
+
+                    anchorSlot = googletag.defineOutOfPageSlot(
+                        "/6355419/Travel/Europe/France/Paris",
+                        googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
+                    );
+
+                    if (anchorSlot) {
+                        anchorSlot.addService(pubads);
+                        anchorSlot.setElementId("ad-anchor-slot");
+                    }
+
+                    pubads.addEventListener("slotRenderEnded", function (event) {
+                        const slotId = event.slot.getSlotElementId();
+                        const isEmpty = event.isEmpty;
+
+                        if (isEmpty && document.getElementById(slotId)) {
+                            document.getElementById(slotId).style.display = "none";
+                        }
+                    });
+
+                    googletag.enableServices();
+
+                    try {
+                        if (document.getElementById("ad-slot-1")) {
+                            googletag.display("ad-slot-1");
+                        }
+                        if (document.getElementById("ad-slot-2")) {
+                            googletag.display("ad-slot-2");
+                        }
+                        if (document.getElementById("ad-anchor-slot")) {
+                            googletag.display("ad-anchor-slot");
+                        }
+                    } catch (error) {
+                        console.log("Error displaying ads:", error);
+                    }
+
+                    setupAdRefresh();
+                });
+            }
+
+            function setupAdRefresh() {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+
+                refreshTimer = setInterval(function () {
+                    try {
+                        const slotsToRefresh = [];
+                        if (adSlot1) slotsToRefresh.push(adSlot1);
+                        if (adSlot2) slotsToRefresh.push(adSlot2);
+
+                        if (slotsToRefresh.length > 0) {
+                            googletag.cmd.push(function () {
+                                googletag.pubads().refresh(slotsToRefresh);
+                            });
+                        }
+                    } catch (error) {
+                        console.log("Error refreshing ads:", error);
+                        clearInterval(refreshTimer);
+                    }
+                }, refreshInterval);
+            }
+
+            function checkAdBlocker() {
+                const testAd = document.createElement("div");
+                testAd.innerHTML = "&nbsp;";
+                testAd.className = "adsbox";
+                document.body.appendChild(testAd);
+
+                setTimeout(function () {
+                    if (testAd.offsetHeight === 0) {
+                        console.log("Ad blocker detected");
+                    }
+                    document.body.removeChild(testAd);
+                }, 100);
+            }
+
+            if (
+                document.readyState === "complete" ||
+                document.readyState === "interactive"
+            ) {
+                setupAds();
+                checkAdBlocker();
+            } else {
+                document.addEventListener("DOMContentLoaded", function () {
+                    setupAds();
+                    checkAdBlocker();
+                });
+            }
+
+            window.addEventListener("beforeunload", function () {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+            });
+        })();
+    </script>
+
+    <style>
+        #banner-ad {
+            width: 100%;
+            max-width: 425px;
+            margin: 1rem auto 0.5rem;
+            padding: 0.5rem;
+            background: lab(96.26% 0.34 0.11);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--accent-gold);
+        }
+
+        #banner-ad::before {
+            content: "Advertisement";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            background: var(--primary-dark);
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .ad-divider {
+            width: 90%;
+            max-width: 425px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 0.5rem auto;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            max-width: 425px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #0d001a 0%, #1a0033 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 40px var(--shadow-dark);
+            border-left: 1px solid var(--accent-gold);
+            border-right: 1px solid var(--accent-gold);
+        }
+
+        .tabs-container {
+            width: 100%;
+            max-width: 425px;
+            padding: 1rem;
+            background: rgba(178, 145, 209, 0.95);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        */ .tab-content.active {
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px var(--shadow-light);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Floating Particles Background -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-amber-300 opacity-20 floating"
+            style="animation-delay: 0s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-pink-300 opacity-20 floating"
+            style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-5 h-5 rounded-full bg-amber-400 opacity-20 floating"
+            style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-3 h-3 rounded-full bg-pink-400 opacity-20 floating"
+            style="animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-gray-900 text-2xl font-bold">Banklytech<span
+                            class="text-amber-500">.</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="px-3 py-2 rounded-md text-sm font-medium bg-amber-100 text-amber-700">Home</a>
+                    <a href="valuation-methods.html"
+                        class="text-gray-700 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Methods</a>
+                    <a href="PrivacyPolicy.html"
+                        class="text-gray-700 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Privacy</a>
+                    <a href="#"
+                        class="ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transition duration-300">Get
+                        Started</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-amber-100">Home</a>
+                <a href="valuation-methods.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-amber-50">Methods</a>
+                <a href="PrivacyPolicy.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-amber-50">Privacy</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-white bg-amber-600 hover:bg-amber-700 text-center mt-2">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Unique Hero Section with Animated Wave -->
+    <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6">
+                    <span class="gradient-text">Corporate Valuation</span><br>Mastery Redefined
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-300">
+                    Advanced techniques and insights to accurately assess company worth in today's dynamic markets.
+                </p>
+                <div class="mt-10">
+                    <a href="valuation-methods.html"
+                        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transition duration-300 transform hover:scale-105">
+                        Explore Our Methods
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Animated Wave Shape -->
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Advertisement Banner -->
+    <div id="banner-ad" class="ads-box" style="min-height: 250px;">
+        <div id="ad-slot-1" class="ad-container" style="display: block !important;"></div>
+
+    </div>
+
+    <!-- Valuation Methods Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Valuation Approaches</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Comprehensive Valuation Techniques
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    We employ multiple methodologies to determine the most accurate valuation for your business.
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                    <!-- DCF Method -->
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 text-white">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Discounted Cash Flow</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Projects future cash flows and discounts them back to present value using an appropriate
+                            discount rate.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Most theoretically sound method</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Forward-looking approach</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Accounts for time value of money</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Comparable Companies -->
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-pink-500 to-pink-600 text-white">
+                            <i class="fas fa-balance-scale text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Comparable Companies</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Values company based on valuation multiples of similar publicly traded companies.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+                                <span>Market-based approach</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+                                <span>Relatively simple to understand</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-pink-500 mt-1 mr-2"></i>
+                                <span>Reflects current market conditions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Precedent Transactions -->
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <div
+                            class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-amber-500 to-amber-600 text-white">
+                            <i class="fas fa-exchange-alt text-xl"></i>
+                        </div>
+                        <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900">Precedent Transactions</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Analyzes prices paid for similar companies in past M&A transactions.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Real-world transaction data</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Includes control premium</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-500 mt-1 mr-2"></i>
+                                <span>Useful for M&A valuations</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-gradient-to-r from-gray-900 to-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-amber-400 font-semibold tracking-wide uppercase">Trusted By</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Our Valuation Expertise
+                </p>
+            </div>
+            <div class="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div class="col-span-1 flex flex-col text-center">
+                    <dt class="text-4xl font-extrabold text-white">500+</dt>
+                    <dd class="mt-2 text-sm font-medium text-amber-200">Valuations Completed</dd>
+                </div>
+                <div class="col-span-1 flex flex-col text-center">
+                    <dt class="text-4xl font-extrabold text-white">$10B+</dt>
+                    <dd class="mt-2 text-sm font-medium text-amber-200">Total Value Assessed</dd>
+                </div>
+                <div class="col-span-1 flex flex-col text-center">
+                    <dt class="text-4xl font-extrabold text-white">20+</dt>
+                    <dd class="mt-2 text-sm font-medium text-amber-200">Industries Covered</dd>
+                </div>
+                <div class="col-span-1 flex flex-col text-center">
+                    <dt class="text-4xl font-extrabold text-white">98%</dt>
+                    <dd class="mt-2 text-sm font-medium text-amber-200">Client Satisfaction</dd>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Studies Preview -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-12">
+                <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Case Studies</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Real-World Valuation Examples
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Case Study 1 -->
+                <div class="card-hover bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-amber-500 rounded-md p-3">
+                                <i class="fas fa-industry text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <h3 class="text-lg font-medium text-gray-900">Manufacturing Sector</h3>
+                                <p class="mt-1 text-sm text-gray-500">Mid-sized industrial company</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-600">
+                                Complex valuation involving cyclical revenue patterns and significant capital
+                                expenditures.
+                            </p>
+                            <div class="mt-4">
+                                <a href="case-studies.html"
+                                    class="text-sm font-medium text-amber-600 hover:text-amber-500">
+                                    View Case Study <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="card-hover bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-pink-500 rounded-md p-3">
+                                <i class="fas fa-laptop-code text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <h3 class="text-lg font-medium text-gray-900">Tech Startup</h3>
+                                <p class="mt-1 text-sm text-gray-500">Series B funding round</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-600">
+                                Valuation of high-growth SaaS company with negative EBITDA but strong revenue growth.
+                            </p>
+                            <div class="mt-4">
+                                <a href="case-studies.html"
+                                    class="text-sm font-medium text-pink-600 hover:text-pink-500">
+                                    View Case Study <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="card-hover bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-amber-500 rounded-md p-3">
+                                <i class="fas fa-store text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <h3 class="text-lg font-medium text-gray-900">Retail Chain</h3>
+                                <p class="mt-1 text-sm text-gray-500">M&A transaction</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-600">
+                                Valuation for acquisition of regional retail chain with multiple locations.
+                            </p>
+                            <div class="mt-4">
+                                <a href="case-studies.html"
+                                    class="text-sm font-medium text-amber-600 hover:text-amber-500">
+                                    View Case Study <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="case-studies.html"
+                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transition duration-300">
+                    View All Case Studies
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advertisement Banner -->
+     <div id="banner-ad" class="ads-box" style="min-height: 250px;">
+        <div id="ad-slot-2" class="ad-container" style="display: block !important;"></div>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl shadow-xl overflow-hidden">
+                <div class="px-6 py-12 sm:p-16">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-extrabold tracking-tight text-white">
+                                Ready to Get an Accurate Valuation?
+                            </h2>
+                            <p class="mt-3 max-w-3xl text-lg text-amber-100">
+                                Our experts will provide a comprehensive valuation tailored to your specific needs.
+                            </p>
+                        </div>
+                        <div class="mt-8 md:mt-0 md:w-1/2 md:pl-8">
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="flex-1 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-amber-700 bg-white hover:bg-amber-50 transition duration-300">
+                                    Get Started
+                                </a>
+                                <a href="#"
+                                    class="flex-1 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 bg-opacity-60 hover:bg-opacity-70 transition duration-300">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <span class="text-white text-2xl font-bold">Banklytech<span class="text-amber-500">.</span></span>
+                    <p class="text-gray-300 text-base">
+                        Advanced corporate valuation techniques and insights for businesses of all sizes.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Services
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="valuation-methods.html"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Valuation Methods
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Financial Modeling
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        M&A Advisory
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Due Diligence
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Resources
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Valuation Tools
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Industry Reports
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Company
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="PrivacyPolicy.html"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Terms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Contact
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Support
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Careers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Newsletter
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 Banklytech. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+
+
+
+</html>

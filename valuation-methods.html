@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuation Methods | Banklytech</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #f59e0b, #ef4444);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f59e0b;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Floating Particles Background -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-amber-300 opacity-20 floating" style="animation-delay: 0s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-pink-300 opacity-20 floating" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-5 h-5 rounded-full bg-amber-400 opacity-20 floating" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-3 h-3 rounded-full bg-pink-400 opacity-20 floating" style="animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-gray-900 text-2xl font-bold">Banklytech<span class="text-amber-500">.</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
+                    <a href="valuation-methods.html" class="px-3 py-2 rounded-md text-sm font-medium bg-amber-100 text-amber-700">Methods</a>
+                    <a href="PrivacyPolicy.html" class="text-gray-700 hover:text-amber-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Privacy</a>
+                    <a href="#" class="ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transition duration-300">Get Started</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-amber-50">Home</a>
+                <a href="valuation-methods.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-amber-100">Methods</a>
+                <a href="PrivacyPolicy.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-amber-50">Privacy</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-amber-600 hover:bg-amber-700 text-center mt-2">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6">
+                    <span class="gradient-text">Valuation</span><br>Methodologies
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-300">
+                    Comprehensive guide to the most effective corporate valuation techniques used by professionals.
+                </p>
+                <div class="mt-10">
+                    <a href="index.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transition duration-300 transform hover:scale-105">
+                        Corporate valuation
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </a>                    
+                </div>
+            </div>
+        </div>
+        <!-- Animated Wave Shape -->
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Advertisement Banner -->
+    <div class="bg-gray-200 py-4 px-4 text-center">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-sm text-gray-600">Advertisement Space</p>
+            <div class="mt-2 h-24 bg-white flex items-center justify-center border border-gray-300 rounded-lg">
+                <p class="text-gray-500">Your Advertisement Here</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Valuation Methods Tabs -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Approaches</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Core Valuation Techniques
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Select a methodology to learn about its principles, applications, and implementation.
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center border-b border-gray-200 mb-8">
+                <button class="tab-button active px-6 py-3 text-sm font-medium text-gray-900 border-b-2 border-amber-500" data-tab="dcf">
+                    <i class="fas fa-chart-line mr-2"></i> DCF
+                </button>
+                <button class="tab-button px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="comps">
+                    <i class="fas fa-balance-scale mr-2"></i> Comparables
+                </button>
+                <button class="tab-button px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="transactions">
+                    <i class="fas fa-exchange-alt mr-2"></i> Transactions
+                </button>
+                <button class="tab-button px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" data-tab="asset">
+                    <i class="fas fa-building mr-2"></i> Asset-Based
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="tab-content active" id="dcf">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="method-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Discounted Cash Flow Analysis</h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            The DCF method estimates the value of an investment based on its expected future cash flows, adjusted for the time value of money.
+                        </p>
+                        <div class="prose max-w-none text-gray-600">
+                            <h4 class="text-xl font-semibold text-gray-900">Key Components:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Projection of free cash flows (FCF)</li>
+                                <li>Determination of discount rate (WACC)</li>
+                                <li>Calculation of terminal value</li>
+                                <li>Present value computation</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">When to Use:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Companies with predictable cash flows</li>
+                                <li>When intrinsic value is more important than market comparables</li>
+                                <li>For valuing entire businesses or specific projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">DCF Formula:</h4>
+                        <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                            <p class="text-center text-lg font-mono">
+                                Value = Σ [FCF<sub>t</sub> / (1 + r)<sup>t</sup>] + [TV / (1 + r)<sup>n</sup>]
+                            </p>
+                        </div>
+                        <div class="prose max-w-none text-gray-600">
+                            <h4 class="text-xl font-semibold text-gray-900">Advantages:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Fundamentally sound approach</li>
+                                <li>Flexible for different growth scenarios</li>
+                                <li>Not dependent on market comparables</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">Limitations:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Sensitive to assumptions (growth rates, discount rates)</li>
+                                <li>Difficult for companies with unpredictable cash flows</li>
+                                <li>Terminal value often represents large portion of total value</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="comps">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="method-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Comparable Companies Analysis</h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            This method values a company by comparing it to similar businesses based on valuation multiples.
+                        </p>
+                        <div class="prose max-w-none text-gray-600">
+                            <h4 class="text-xl font-semibold text-gray-900">Key Components:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Selection of appropriate peer group</li>
+                                <li>Calculation of relevant multiples (P/E, EV/EBITDA, etc.)</li>
+                                <li>Normalization of financial metrics</li>
+                                <li>Application of multiples to subject company</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">When to Use:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>When there are sufficient comparable public companies</li>
+                                <li>For market-relative valuations</li>
+                                <li>Quick sanity checks on other valuation methods</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Common Multiples:</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Price-to-Earnings (P/E)</p>
+                                <p class="text-sm text-gray-600">Market Cap / Net Income</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">EV/EBITDA</p>
+                                <p class="text-sm text-gray-600">Enterprise Value / EBITDA</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Price-to-Book (P/B)</p>
+                                <p class="text-sm text-gray-600">Market Cap / Book Value</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">EV/Sales</p>
+                                <p class="text-sm text-gray-600">Enterprise Value / Revenue</p>
+                            </div>
+                        </div>
+                        <div class="prose max-w-none text-gray-600 mt-6">
+                            <h4 class="text-xl font-semibold text-gray-900">Advantages:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Market-based and current</li>
+                                <li>Relatively simple to understand</li>
+                                <li>Widely used and accepted</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">Limitations:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Difficult to find perfect comparables</li>
+                                <li>Market multiples may be distorted</li>
+                                <li>Doesn't account for unique company characteristics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="transactions">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="method-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Precedent Transactions Analysis</h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            This approach values a company based on the prices paid for similar companies in past M&A transactions.
+                        </p>
+                        <div class="prose max-w-none text-gray-600">
+                            <h4 class="text-xl font-semibold text-gray-900">Key Components:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Identification of relevant transactions</li>
+                                <li>Analysis of deal terms and premiums paid</li>
+                                <li>Calculation of transaction multiples</li>
+                                <li>Application to subject company</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">When to Use:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>For M&A valuations</li>
+                                <li>When assessing potential acquisition targets</li>
+                                <li>To determine control premiums</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Transaction Multiples:</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">EV/EBITDA</p>
+                                <p class="text-sm text-gray-600">Most common transaction multiple</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Price/Earnings</p>
+                                <p class="text-sm text-gray-600">For profitable companies</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">EV/Revenue</p>
+                                <p class="text-sm text-gray-600">For high-growth companies</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Price/Book</p>
+                                <p class="text-sm text-gray-600">For asset-heavy businesses</p>
+                            </div>
+                        </div>
+                        <div class="prose max-w-none text-gray-600 mt-6">
+                            <h4 class="text-xl font-semibold text-gray-900">Advantages:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Real-world transaction data</li>
+                                <li>Includes control premiums</li>
+                                <li>Reflects strategic value</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">Limitations:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Limited data availability</li>
+                                <li>Transactions may not be comparable</li>
+                                <li>Market conditions may have changed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="asset">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="method-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Asset-Based Valuation</h3>
+                        <p class="text-lg text-gray-600 mb-6">
+                            This method values a company based on the net value of its assets after subtracting liabilities.
+                        </p>
+                        <div class="prose max-w-none text-gray-600">
+                            <h4 class="text-xl font-semibold text-gray-900">Key Components:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Identification and valuation of all assets</li>
+                                <li>Assessment of liabilities</li>
+                                <li>Adjustment to fair market value (not book value)</li>
+                                <li>Consideration of intangible assets</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">When to Use:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>For asset-heavy businesses</li>
+                                <li>In liquidation scenarios</li>
+                                <li>When earnings are volatile or negative</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Approaches:</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Going Concern</p>
+                                <p class="text-sm text-gray-600">Assets valued for continued use in business</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Liquidation Value</p>
+                                <p class="text-sm text-gray-600">Assets valued in forced sale scenario</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <p class="font-medium">Replacement Cost</p>
+                                <p class="text-sm text-gray-600">Cost to recreate the business</p>
+                            </div>
+                        </div>
+                        <div class="prose max-w-none text-gray-600 mt-6">
+                            <h4 class="text-xl font-semibold text-gray-900">Advantages:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Tangible foundation based on assets</li>
+                                <li>Useful for certain industries (real estate, manufacturing)</li>
+                                <li>Provides floor value</li>
+                            </ul>
+                            
+                            <h4 class="text-xl font-semibold text-gray-900 mt-6">Limitations:</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Doesn't account for earning power</li>
+                                <li>May undervalue intangible assets</li>
+                                <li>Difficult to value specialized assets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Methodology Comparison -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-amber-600 font-semibold tracking-wide uppercase">Comparison</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Valuation Methodologies Compared
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Understanding the strengths and weaknesses of each approach.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Best For</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Strengths</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Weaknesses</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">DCF</td>
+                            <td class="px-6 py-4 text-gray-600">Companies with predictable cash flows</td>
+                            <td class="px-6 py-4 text-gray-600">Fundamental, flexible, forward-looking</td>
+                            <td class="px-6 py-4 text-gray-600">Sensitive to assumptions</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">High</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Comparables</td>
+                            <td class="px-6 py-4 text-gray-600">Public companies with peers</td>
+                            <td class="px-6 py-4 text-gray-600">Market-based, simple, current</td>
+                            <td class="px-6 py-4 text-gray-600">Need good comparables</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">Medium</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Transactions</td>
+                            <td class="px-6 py-4 text-gray-600">M&A valuations</td>
+                            <td class="px-6 py-4 text-gray-600">Real transaction data, includes premiums</td>
+                            <td class="px-6 py-4 text-gray-600">Limited data availability</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">Medium</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Asset-Based</td>
+                            <td class="px-6 py-4 text-gray-600">Asset-heavy businesses</td>
+                            <td class="px-6 py-4 text-gray-600">Tangible, floor value</td>
+                            <td class="px-6 py-4 text-gray-600">Ignores earning power</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">Low-Medium</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl shadow-xl overflow-hidden">
+                <div class="px-6 py-12 sm:p-16">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-extrabold tracking-tight text-white">
+                                Need Help Applying These Methods?
+                            </h2>
+                            <p class="mt-3 max-w-3xl text-lg text-amber-100">
+                                Our valuation experts can guide you through the process and determine the best approach for your specific situation.
+                            </p>
+                        </div>
+                        <div class="mt-8 md:mt-0 md:w-1/2 md:pl-8">
+                            <div class="flex space-x-4">
+                                <a href="#" class="flex-1 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-amber-700 bg-white hover:bg-amber-50 transition duration-300">
+                                    Contact Us
+                                </a>
+                                <a href="#" class="flex-1 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 bg-opacity-60 hover:bg-opacity-70 transition duration-300">
+                                    Download Guide
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <span class="text-white text-2xl font-bold">Banklytech<span class="text-amber-500">.</span></span>
+                    <p class="text-gray-300 text-base">
+                        Advanced corporate valuation techniques and insights for businesses of all sizes.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Services
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="valuation-methods.html" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Valuation Methods
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Financial Modeling
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        M&A Advisory
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Due Diligence
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Resources
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Valuation Tools
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Industry Reports
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Company
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="PrivacyPolicy.html" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Terms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Contact
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Support
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Careers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white transition duration-300">
+                                        Newsletter
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 Banklytech. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+
+    // Tab functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const tabTarget = button.getAttribute('data-tab-target');
+
+            // Remove 'active' class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Add 'active' to clicked button
+            button.classList.add('active');
+
+            // Show the selected tab content
+            const targetContent = document.getElementById(tabTarget);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
